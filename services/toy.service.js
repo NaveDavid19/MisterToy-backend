@@ -13,22 +13,27 @@ export const toyService = {
 const toys = utilService.readJsonFile('data/toy.json')
 
 function query(filterBy = {}) {
-    console.log("filterBy:", filterBy)
-    if (!filterBy.txt) filterBy.txt = ''
-    if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
-    if (!filterBy.inStock) filterBy.inStock = 'all'
-    const regExp = new RegExp(filterBy.txt, 'i')
-    var toysToReturn = toys.filter(toy => regExp.test(toy.name))
+    if (!filterBy) return Promise.resolve(toys)
+
+    let filteredToys = toys
+    if (filterBy.txt) {
+        const regExp = new RegExp(filterBy.txt, 'i')
+        filteredToys = filteredToys.filter(toy => regExp.test(toy.name))
+    }
     if (filterBy.maxPrice) {
-        toysToReturn = toysToReturn.filter(toy => toy.price <= filterBy.maxPrice)
+        filteredToys = filteredToys.filter(toy => toy.price <= filterBy.maxPrice)
     }
-    if (filterBy.inStock !== 'all') {
-        toysToReturn = toysToReturn.filter(toy => {
-            return (filterBy.inStock === 'inStock' && toy.inStock) ||
-                (filterBy.inStock === 'outOfStock' && !toy.inStock);
-        });
+    if (filterBy.inStock === 'all') {
+        filteredToys = filteredToys
     }
-    return Promise.resolve(toysToReturn)
+    if (filterBy.inStock === 'inStock') {
+        filteredToys = filteredToys.filter(toy => toy.inStock)
+    }
+    if (filterBy.inStock === 'outOfStock') {
+        filteredToys = filteredToys.filter(toy => !toy.inStock)
+    }
+
+    return Promise.resolve(filteredToys)
 }
 
 function getById(toyId) {

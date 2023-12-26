@@ -21,7 +21,7 @@
             "Kids"
         ],
         "createdAt": 1631031801011,
-        "inStock": false
+        "inStock": true
     },
     {
         "_id": "t103",
