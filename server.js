@@ -1,45 +1,61 @@
-import path from 'path'
 import express from 'express'
 import cors from 'cors'
+import path, { dirname } from 'path'
+import { fileURLToPath } from 'url'
+import cookieParser from 'cookie-parser'
+import { toyRoutes } from './api/toy/toy.routes.js'
 
-import { toyService } from './services/toy.service.js'
-import { loggerService } from './services/logger.service.js'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+import { logger } from './services/logger.service.js'
+logger.info('server.js loaded...')
+
+import { toyService } from './api/toy/toy.service.js'
 
 const app = express()
 
-// Express Config:
-const corsOptions = {
-    origin: [
-        'http://127.0.0.1:8080',
-        'http://localhost:8080',
-        'http://127.0.0.1:5173',
-        'http://localhost:5173',
-    ],
-    credentials: true
-}
-app.use(cors(corsOptions))
-app.use(express.static('public'))
+// Express App Config
+app.use(cookieParser())
 app.use(express.json())
+app.use(express.static('public'))
 
+if (process.env.NODE_ENV === 'production') {
+    // Express serve static files on production environment
+    app.use(express.static(path.resolve(__dirname, 'public')))
+    console.log('__dirname: ', __dirname)
+} else {
+    // Configuring CORS
+    const corsOptions = {
+        // Make sure origin contains the url your frontend is running on
+        origin: ['http://127.0.0.1:5173', 'http://localhost:5173', 'http://127.0.0.1:3000', 'http://localhost:3000'],
+        credentials: true
+    }
+    app.use(cors(corsOptions))
+}
+
+
+app.use('/api/toy', toyRoutes)
 
 // REST API for Toys
 
 // Toy LIST
-app.get('/api/toy', (req, res) => {
-    const filterBy = {
-        txt: req.query.txt || '',
-        maxPrice: +req.query.maxPrice || 0,
-        inStock: req.query.inStock || 'all'
-    }
-    toyService.query(filterBy)
-        .then((toys) => {
-            res.send(toys)
-        })
-        .catch((err) => {
-            loggerService.error('Cannot get toys', err)
-            res.status(400).send('Cannot get toys')
-        })
-})
+// app.get('/api/toy', (req, res) => {
+//     const filterBy = {
+//         txt: req.query.txt || '',
+//         maxPrice: +req.query.maxPrice || 0,
+//         inStock: req.query.inStock || 'all',
+//         label: req.query.label || []
+//     }
+//     toyService.query(filterBy)
+//         .then((toys) => {
+//             res.send(toys)
+//         })
+//         .catch((err) => {
+//             logger.error('Cannot get toys', err)
+//             res.status(400).send('Cannot get toys')
+//         })
+// })
 
 // Toy READ
 app.get('/api/toy/:toyId', (req, res) => {
@@ -49,7 +65,7 @@ app.get('/api/toy/:toyId', (req, res) => {
             res.send(toy)
         })
         .catch((err) => {
-            loggerService.error('Cannot get toy', err)
+            logger.error('Cannot get toy', err)
             res.status(400).send('Cannot get toy')
         })
 })
@@ -59,7 +75,7 @@ app.post('/api/toy', (req, res) => {
     const toy = {
         name: req.body.name,
         price: +req.body.price,
-        lables: +req.body.lables,
+        labels: req.body.labels,
         createdAt: +req.body.createdAt,
         inStock: +req.body.inStock,
         img: req.body.img
@@ -69,7 +85,7 @@ app.post('/api/toy', (req, res) => {
             res.send(savedToy)
         })
         .catch((err) => {
-            loggerService.error('Cannot save toy', err)
+            logger.error('Cannot save toy', err)
             res.status(400).send('Cannot save toy')
         })
 
@@ -88,7 +104,7 @@ app.put('/api/toy', (req, res) => {
             res.send(savedToy)
         })
         .catch((err) => {
-            loggerService.error('Cannot save toy', err)
+            logger.error('Cannot save toy', err)
             res.status(400).send('Cannot save toy')
         })
 
@@ -99,11 +115,11 @@ app.delete('/api/toy/:toyId', (req, res) => {
     const { toyId } = req.params
     toyService.remove(toyId)
         .then(() => {
-            loggerService.info(`Toy ${toyId} removed`)
+            logger.info(`Toy ${toyId} removed`)
             res.send('Removed!')
         })
         .catch((err) => {
-            loggerService.error('Cannot remove toy', err)
+            logger.error('Cannot remove toy', err)
             res.status(400).send('Cannot remove toy')
         })
 
@@ -115,8 +131,8 @@ app.get('/**', (req, res) => {
     res.sendFile(path.resolve('public/index.html'))
 })
 
+const port = process.env.PORT || 3030
 
-const PORT = 3030
-app.listen(PORT, () =>
-    loggerService.info(`Server listening on port http://127.0.0.1:${PORT}/`)
-)
+app.listen(port, () => {
+    logger.info('Server is running on port: ' + port)
+})
