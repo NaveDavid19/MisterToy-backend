@@ -64,6 +64,7 @@ async function update(toy) {
       name: toy.name,
       inStock: toy.inStock,
       price: toy.price,
+      msgs: toy.msgs,
     }
     const collection = await dbService.getCollection("toys")
     await collection.updateOne(
