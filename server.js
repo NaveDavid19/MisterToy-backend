@@ -3,10 +3,10 @@ import cors from "cors"
 import path, { dirname } from "path"
 import { fileURLToPath } from "url"
 import cookieParser from "cookie-parser"
-import { toyRoutes } from "./api/toy/toy.routes.js"
+import { logger } from "./services/logger.service.js"
 import { authRoutes } from "./api/auth/auth.routes.js"
 import { userRoutes } from "./api/user/user.routes.js"
-import { logger } from "./services/logger.service.js"
+import { toyRoutes } from "./api/toy/toy.routes.js"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
