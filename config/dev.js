@@ -1,4 +1,4 @@
 export default {
-    dbURL: 'mongodb://localhost:27017',
-    dbName: 'toyDB',
+  dbURL: "mongodb://localhost:27017",
+  dbName: "toyDB",
 }
