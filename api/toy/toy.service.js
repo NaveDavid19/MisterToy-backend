@@ -11,6 +11,7 @@ export const toyService = {
   remove,
   update,
   add,
+  addToyMsg,
   labels,
 }
 
@@ -85,6 +86,21 @@ async function add(toy) {
     return toy
   } catch (err) {
     logger.error("cannot insert toy", err)
+    throw err
+  }
+}
+
+async function addToyMsg(toyId, msg) {
+  try {
+    msg.id = utilService.makeId()
+    const collection = await dbService.getCollection("toys")
+    await collection.updateOne(
+      { _id: new ObjectId(toyId) },
+      { $push: { msgs: msg } }
+    )
+    return msg
+  } catch (err) {
+    logger.error(`cannot add toy msg ${toyId}`, err)
     throw err
   }
 }

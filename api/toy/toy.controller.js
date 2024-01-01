@@ -64,3 +64,19 @@ export async function removeToy(req, res) {
     res.status(500).send({ err: "Failed to remove toy" })
   }
 }
+
+export async function addToyMsg(req, res) {
+  const { loggedinUser } = req
+  try {
+    const toyId = req.params.id
+    const msg = {
+      txt: req.body.txt,
+      by: loggedinUser,
+    }
+    const savedMsg = await toyService.addToyMsg(toyId, msg)
+    res.json(savedMsg)
+  } catch (err) {
+    logger.error("Failed to update toy", err)
+    res.status(500).send({ err: "Failed to update toy" })
+  }
+}
