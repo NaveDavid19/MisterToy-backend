@@ -1592,3 +1592,64 @@
 1.1.2024, 16:21:38 - INFO - Req was made | / 
 1.1.2024, 16:21:40 - INFO - Req was made | / 
 1.1.2024, 16:21:41 - INFO - Req was made | / 
+1.1.2024, 17:01:37 - INFO - Req was made | / 
+1.1.2024, 17:01:37 - INFO - Req was made | / 
+1.1.2024, 17:02:53 - INFO - Req was made | /:toyId 
+1.1.2024, 17:03:03 - INFO - Req was made | /:toyId 
+1.1.2024, 17:03:07 - INFO - Req was made | /labels 
+1.1.2024, 17:03:07 - INFO - Req was made | / 
+1.1.2024, 17:03:09 - INFO - Req was made | /:toyId 
+1.1.2024, 17:03:12 - INFO - Req was made | / 
+1.1.2024, 17:03:12 - INFO - Req was made | / 
+1.1.2024, 17:12:27 - INFO - Req was made | / 
+1.1.2024, 17:12:27 - INFO - Req was made | / 
+1.1.2024, 17:12:42 - INFO - Req was made | / 
+1.1.2024, 17:12:42 - INFO - Req was made | / 
+1.1.2024, 17:13:36 - INFO - Req was made | /labels 
+1.1.2024, 17:13:36 - INFO - Req was made | / 
+1.1.2024, 17:13:38 - INFO - Req was made | /labels 
+1.1.2024, 17:13:38 - INFO - Req was made | / 
+1.1.2024, 17:13:44 - INFO - Req was made | /labels 
+1.1.2024, 17:13:44 - INFO - Req was made | / 
+1.1.2024, 17:16:26 - INFO - Req was made | /labels 
+1.1.2024, 17:16:26 - INFO - Req was made | / 
+1.1.2024, 17:17:16 - INFO - Req was made | /:toyId 
+1.1.2024, 17:18:11 - INFO - Req was made | / 
+1.1.2024, 17:18:11 - INFO - Req was made | / 
+1.1.2024, 17:51:37 - INFO - Req was made | /:toyId 
+1.1.2024, 17:53:47 - INFO - Req was made | /:toyId 
+1.1.2024, 17:54:21 - INFO - Req was made | /:toyId 
+1.1.2024, 17:54:23 - INFO - Req was made | /:toyId 
+1.1.2024, 17:55:15 - INFO - Req was made | /:toyId 
+1.1.2024, 17:55:18 - INFO - Req was made | /:toyId 
+1.1.2024, 17:56:15 - INFO - Req was made | /:toyId 
+1.1.2024, 18:00:49 - INFO - Req was made | /:toyId 
+1.1.2024, 18:01:47 - INFO - Req was made | /:toyId 
+1.1.2024, 18:01:58 - INFO - Req was made | /:toyId 
+1.1.2024, 18:03:27 - INFO - Req was made | /:toyId 
+1.1.2024, 18:04:25 - INFO - server.js loaded... 
+1.1.2024, 18:04:25 - INFO - Server is running on port: 3030 
+1.1.2024, 18:05:06 - INFO - server.js loaded... 
+1.1.2024, 18:05:06 - INFO - Server is running on port: 3030 
+1.1.2024, 18:05:27 - INFO - server.js loaded... 
+1.1.2024, 18:05:27 - INFO - Server is running on port: 3030 
+1.1.2024, 18:05:34 - INFO - server.js loaded... 
+1.1.2024, 18:05:34 - INFO - Server is running on port: 3030 
+1.1.2024, 18:05:43 - INFO - server.js loaded... 
+1.1.2024, 18:05:43 - INFO - Server is running on port: 3030 
+1.1.2024, 18:06:00 - INFO - server.js loaded... 
+1.1.2024, 18:06:00 - INFO - Server is running on port: 3030 
+1.1.2024, 18:06:49 - INFO - server.js loaded... 
+1.1.2024, 18:06:49 - INFO - Server is running on port: 3030 
+1.1.2024, 18:08:34 - INFO - server.js loaded... 
+1.1.2024, 18:08:34 - INFO - Server is running on port: 3030 
+1.1.2024, 18:31:20 - INFO - server.js loaded... 
+1.1.2024, 18:31:20 - INFO - Server is running on port: 3030 
+1.1.2024, 18:31:21 - INFO - Req was made | /labels 
+1.1.2024, 18:31:21 - INFO - Req was made | / 
+1.1.2024, 18:33:55 - INFO - server.js loaded... 
+1.1.2024, 18:33:55 - INFO - Server is running on port: 3030 
+1.1.2024, 18:45:50 - INFO - server.js loaded... 
+1.1.2024, 18:45:50 - INFO - Server is running on port: 3030 
+1.1.2024, 18:45:59 - INFO - Req was made | /labels (userId: 65902f40461ef73e5a0798d0)
+1.1.2024, 18:45:59 - INFO - Req was made | / (userId: 65902f40461ef73e5a0798d0)
