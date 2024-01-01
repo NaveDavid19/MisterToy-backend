@@ -1,6 +1,6 @@
 import { logger } from "../services/logger.service.js"
-import { authService } from "../api/auth/auth.service.js"
 import { asyncLocalStorage } from "../services/als.service.js"
+import { config } from "../config/index.js"
 
 export function requireAuth(req, res, next) {
   const { loggedinUser } = asyncLocalStorage.getStore()
